@@ -1,15 +1,14 @@
 import requests
 
 url ='http://www.wttr.in/'
-payload= {'n':'','lang':'ru'}
-cities_name= {'Лондон':'Лондон',
-              'Шереметьево': 'Шереметьево',
-              'Череповец':'Череповец',
-              }
+payload= {'nTqm': '', 
+          'lang': 'ru'}
 
-for city_name in cities_name:  
+cities= ['Лондон',
+        'Шереметьево',
+        'Череповец',]
 
-  response= requests.get(url +city_name, params= payload)
-  response.raise_for_status()
-  response.url
+for city in cities:  
+  response= requests.get (f'{url}{city}', params= payload)
+  response.raise_for_status()  
   print(response.text)
